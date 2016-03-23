@@ -35,19 +35,20 @@ module.exports.procesarDatos = function(datos){
       dispositivo: resultado[1],
       lat: latitud,
       lng: longitud
-    }, function(datos){
-      console.log('Punto creado correctamente: ' + datos);
+    }, function(puntoCreado){
+      console.log('Punto creado correctamente: ' + puntoCreado);
     })
     
     Ultimo.findOne({'dispositivo': resultado[1]}, function(err, datos){
+      console.log('Datos....: ' + datos);
       if(err) throw err
       if(!datos){
         Ultimo.create({
           dispositivo: resultado[1],
           lat: latitud,
           lng: longitud
-        }, function(datos){
-          console.log('Ultimo punto creado: ' + datos);
+        }, function(ultimoPunto){
+          console.log('Ultimo punto creado: ' + ultimoPunto);
         })
       } else {
         console.log('Datos: ' +datos);
