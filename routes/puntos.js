@@ -34,4 +34,20 @@ router.get('/ultimo', function(req, res, next){
   })
 })
 
+router.get('/borrar', function(req, res, next){
+  Puntos.remove({}, function(err, datos){
+    if(err){
+      res.json({
+        success:false,
+        message: 'Hay un error',
+        data: err
+      })
+    }
+    res.json({
+      success: true,
+      message: 'Api Borrada'
+    })
+  })
+})
+
 module.exports = router;
